@@ -13,7 +13,7 @@ sap.ui.define([
 
             console.log(id);
             let oModel = sap.ui.core.Element.getElementById("project1::CustomerObjectPage--fe::ObjectPageDynamicHeaderTitle-_actionsToolbar").getModel();
-            let oFunc = oModel.bindContext(`/total(...)`);
+            let oFunc = oModel.bindContext(`/total1(...)`);
             oFunc.setParameter("CustomerID", id)
             await oFunc.execute();
             let context = oFunc.getBoundContext();

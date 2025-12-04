@@ -5,6 +5,7 @@ service MyService {
     entity Customer as projection on db.Customer;
     entity Order as projection on db.Order;
     function total(CustomerID : String) returns String;
+    action custom(CustomerID : String, CustomerName : String, CustomerAddress: String) returns String;
   
     
     

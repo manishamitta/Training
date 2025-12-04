@@ -1,3 +1,4 @@
+// const { INSERT } = require("@sap/cds/lib/ql/cqn");
 const SELECT = require("@sap/cds/lib/ql/SELECT");
 
 module.exports = async function () {
@@ -40,13 +41,13 @@ module.exports = async function () {
 
 //     })
 
-    this.before('CREATE', 'Customer.drafts', (req, next) => {
-       debugger
-        var random =  Math.floor(1000 + Math.random() * 9000);
-        req.data.CustomerID =JSON.stringify(random);
-        req.data.status = "pending";
-        return req;
-    })
+    // this.before('CREATE', 'Customer.drafts', (req, next) => {
+    //    debugger
+    //     var random =  Math.floor(1000 + Math.random() * 9000);
+    //     req.data.CustomerID =JSON.stringify(random);
+    //     req.data.status = "pending";
+    //     return req;
+    // })
 //     this.on('CREATE', 'Customer', (req,next) => {
 //         debugger;
 //         req.data.CustomerName = "prem"
@@ -67,5 +68,22 @@ module.exports = async function () {
     //     debugger;
     //     return next();
     // })
+    this.on('custom', async function(req) {
+        debugger;
+        var id = cds.utils.uuid();
+        // await INSERT.into('DRAFT_DRAFTADMINISTRATIVEDATA').entries({
+        //     DRAFTUUID : id
+        // })
+        let{CustomerID, CustomerName, CustomerAddress} = req.data
+        let res = await INSERT.into('MYSERVICE_CUSTOMER_DRAFTS').entries({
+            CustomerID : CustomerID,
+            CustomerName : CustomerName,
+            CustomerAddress: CustomerAddress,
+             DRAFTADMINISTRATIVEDATA_DRAFTUUID : id
+        })
+        
+        console.log('res',res)
+    })
+
     
 }

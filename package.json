@@ -25,6 +25,9 @@
   "cds": {
     "requires": {
       "db" : "hana"
+    },
+    "fiori" :{
+      "bypass_draft": true
     }
   },
   "workspaces": [
