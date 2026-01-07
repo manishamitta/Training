@@ -23,6 +23,16 @@ annotate service.Customer with @(
                 Value : status,
                 Label : 'status',
             },
+            {
+                $Type : 'UI.DataField',
+                Value : imageType,
+                Label : 'imageType',
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : image,
+                Label : 'image',
+            },
         ],
     },
     UI.Facets : [
@@ -54,6 +64,31 @@ annotate service.Customer with @(
             $Type : 'UI.DataField',
             Label : 'CustomerAddress',
             Value : CustomerAddress,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : status,
+            Label : 'status',
+            Criticality : days,
+            CriticalityRepresentation : #WithIcon,
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : image,
+            Label : 'image',
+        },
+        {
+            $Type : 'UI.DataField',
+            Value : imageType,
+            Label : 'imageType',
+        },
+    ],
+    UI.Identification : [
+        {
+            $Type : 'UI.DataFieldForAction',
+            Action : 'MyService.EntityContainer/approval',
+            Label : 'approval',
+            Determining : true,
         },
     ],
 );

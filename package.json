@@ -15,6 +15,7 @@
     "mbt": "^1.2.29"
   },
   "scripts": {
+    "dev" : "cds watch --profile hybrid",
     "start": "cds-serve",
     "watch-project1": "cds watch --open project1/index.html?sap-ui-xx-viewCache=false --livereload false",
     "undeploy": "cf undeploy Training1 --delete-services --delete-service-keys --delete-service-brokers",
@@ -24,7 +25,8 @@
   "private": true,
   "cds": {
     "requires": {
-      "db" : "hana"
+      "db" : "hana",
+      "auth" : "dummy"
     },
     "fiori" :{
       "bypass_draft": true

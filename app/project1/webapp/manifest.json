@@ -131,14 +131,14 @@
               "controlConfiguration": {
                 "@com.sap.vocabularies.UI.v1.LineItem": {
                   "tableSettings": {
-                    "type": "ResponsiveTable"
+                    "type": "GridTable"
                   },
                   "actions": {
                     "1": {
                       "press": "project1.ext.controller.Custom_Action.Custom_Action",
                       "visible": true,
                       "enabled": true,
-                      "requiresSelection": false,
+                      "requiresSelection": true,
                       "text": "Custom Action"
                     }
                   }
@@ -174,6 +174,18 @@
                         "placement": "Before",
                         "anchor": "EditAction"
                       }
+                    }
+                  }
+                },
+                "body": {
+                  "sections": {
+                    "Attachments": {
+                      "template": "project1.ext.fragment.Attachments",
+                      "position": {
+                        "placement": "After",
+                        "anchor": "Orders"
+                      },
+                      "title": "Attachments"
                     }
                   }
                 }

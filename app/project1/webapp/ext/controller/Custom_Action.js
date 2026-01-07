@@ -67,7 +67,7 @@ sap.ui.define([
                                 type: 'POST',
                                 contentType: 'application/json',
                                 data: testdata,
-                                success: function (data) {
+                                succejss: function (data) {
                                     debugger
                                     // Handle success
                                     console.log(data);

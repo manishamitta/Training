@@ -24,22 +24,22 @@ module.exports = async function () {
     //     return next();
     // })
 
-//    //CREATE HOOKS
-//     this.before('CREATE', 'Order', req => {
-//         debugger;
+    //    //CREATE HOOKS
+    //     this.before('CREATE', 'Order', req => {
+    //         debugger;
 
-//         if (!req.data.CustomerName) {
-//             req.error(400, "Name is required");
-//         }
+    //         if (!req.data.CustomerName) {
+    //             req.error(400, "Name is required");
+    //         }
 
-//     })
-//     this.on('CREATE', 'Customer', async (req, next) => {
-//         debugger;
-//         req.data.CustomerID ="108"
-//         return next()
-//         // await INSERT.into('Customer').entries(req.data)
+    //     })
+    //     this.on('CREATE', 'Customer', async (req, next) => {
+    //         debugger;
+    //         req.data.CustomerID ="108"
+    //         return next()
+    //         // await INSERT.into('Customer').entries(req.data)
 
-//     })
+    //     })
 
     // this.before('CREATE', 'Customer.drafts', (req, next) => {
     //    debugger
@@ -48,16 +48,16 @@ module.exports = async function () {
     //     req.data.status = "pending";
     //     return req;
     // })
-//     this.on('CREATE', 'Customer', (req,next) => {
-//         debugger;
-//         req.data.CustomerName = "prem"
-//         return next();
-//     })
+    //     this.on('CREATE', 'Customer', (req,next) => {
+    //         debugger;
+    //         req.data.CustomerName = "prem"
+    //         return next();
+    //     })
 
-//   this.before('UPDATE', 'Customer', req => {
-//         debugger;
-//     })
-  
+    //   this.before('UPDATE', 'Customer', req => {
+    //         debugger;
+    //     })
+
     // this.before('DELETE', 'Customer', req =>{
     //     debugger;
     // })
@@ -68,22 +68,51 @@ module.exports = async function () {
     //     debugger;
     //     return next();
     // })
-    this.on('custom', async function(req) {
+    this.on('custom', async function (req) {
         debugger;
         var id = cds.utils.uuid();
         // await INSERT.into('DRAFT_DRAFTADMINISTRATIVEDATA').entries({
         //     DRAFTUUID : id
         // })
-        let{CustomerID, CustomerName, CustomerAddress} = req.data
+        let { CustomerID, CustomerName, CustomerAddress } = req.data
         let res = await INSERT.into('MYSERVICE_CUSTOMER_DRAFTS').entries({
-            CustomerID : CustomerID,
-            CustomerName : CustomerName,
+            CustomerID: CustomerID,
+            CustomerName: CustomerName,
             CustomerAddress: CustomerAddress,
-             DRAFTADMINISTRATIVEDATA_DRAFTUUID : id
+            DRAFTADMINISTRATIVEDATA_DRAFTUUID: id
         })
-        
-        console.log('res',res)
-    })
 
-    
+        console.log('res', res)
+    })
+    // this.after('READ', 'Attachments.drafts', async (attachments, req) => {
+    //     debugger
+    //     attachments.forEach(element => {
+    //         element.Url = `${this.path}/Attachments(ID=${element.ID},IsActiveEntity=false,CustomerID='${element.CustomerID}')/Content`;
+    //     });
+    // });
+    // this.after('READ', 'Attachments', async function (req, req1) {
+    //     debugger
+    //     console.log("reqqqq", req)
+    //     req.forEach(element => {
+    //         element.Url = `${this.path}/Attachments(ID=${element.ID},IsActiveEntity=true,CustomerID='${element.CustomerID}')/Content`;
+    //         console.log("urlllllllllllll", element.Url);
+    //     });
+
+    // });
+    // this.on('UPDATE', 'Customer', async (req, next) => {
+    //     debugger
+    //     if (req.data?.CustomerToAttachments) {
+    //         req.data.CustomerToAttachments.forEach(file => {
+    //             var filePosition = file.Url.indexOf('false');
+    //             if (filePosition > 0) {
+    //                 var firstPart = file.Url.substring(0, filePosition);
+    //                 var secondPart = file.Url.substring(filePosition);
+    //                 var newurl = firstPart + 'true' + secondPart.substring(5);
+    //                 file.Url = newurl;
+    //             }
+    //         })
+    //     }
+
+    // })
+
 }
